@@ -13,7 +13,6 @@ uses [TinySoundFont](https://github.com/schellingb/TinySoundFont) and [emscripte
 ## bugs
 1. The only major bug is the fact that it's still mono! There's a ongoing TSF issue, which I've reported is still happening.
 2. Also, higher than 100-ish voice count crackles (we're using 200 voices for better blackmidi playback).. I have no clue how to fix this, maybe it's just a issue with how small the sample size for webaudio is (128 samples??).
-3. Volume control is broken. Created a issue for this on the TSF repo.
 
 ## build
 use (with emsdk activated and sourced)

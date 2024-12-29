@@ -40,7 +40,7 @@ void load(uintptr_t data, int length)
   {
     tsf_set_output(g_TinySoundFont, TSF_MONO, 44100, 0);
     tsf_set_max_voices(g_TinySoundFont, 200);
-    tsf_set_volume(g_TinySoundFont, volume / 100);
+    tsf_set_volume(g_TinySoundFont, volume / 100.0f);
   }
 }
 
@@ -114,7 +114,7 @@ int get_volume()
 void set_volume(int vol)
 {
   volume = vol;
-  tsf_set_volume(g_TinySoundFont, vol / 100);
+  tsf_set_volume(g_TinySoundFont, vol / 100.0f);
 }
 
 int start()
