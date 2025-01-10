@@ -11,6 +11,7 @@ static tsf *g_TinySoundFont = NULL;
 
 static bool run;
 int volume = 100;
+int voices = 200;
 
 static bool renderAudio(int numInputs, const AudioSampleFrame *inputs,
                         int numOutputs, AudioSampleFrame *outputs,
@@ -39,7 +40,7 @@ void load(uintptr_t data, int length)
   if (recreating)
   {
     tsf_set_output(g_TinySoundFont, TSF_MONO, 44100, 0);
-    tsf_set_max_voices(g_TinySoundFont, 200);
+    tsf_set_max_voices(g_TinySoundFont, voices);
     tsf_set_volume(g_TinySoundFont, volume / 100.0f);
   }
 }
@@ -117,12 +118,22 @@ void set_volume(int vol)
   tsf_set_volume(g_TinySoundFont, vol / 100.0f);
 }
 
+void set_voices(int voicez) {
+  voices = voicez;
+  tsf_set_max_voices(g_TinySoundFont, voicez);
+}
+
+int get_voices() {
+  return voices;
+}
+
 int start()
 {
   printf("AudioEngine has been started.\n");
 
   tsf_set_output(g_TinySoundFont, TSF_MONO, 44100, 0);
-  tsf_set_max_voices(g_TinySoundFont, 200);
+  tsf_set_max_voices(g_TinySoundFont, voices);
+  tsf_set_volume(g_TinySoundFont, volume / 100.0f);
   EmscriptenWebAudioCreateAttributes attr = {
       .latencyHint = "playback",
       .sampleRate = 44100};
@@ -141,4 +152,6 @@ EMSCRIPTEN_BINDINGS(my_module)
   emscripten::function("note_on", note_on);
   emscripten::function("set_volume", set_volume);
   emscripten::function("get_volume", get_volume);
+  emscripten::function("set_voices", set_voices);
+  emscripten::function("get_voices", get_voices);
 }
