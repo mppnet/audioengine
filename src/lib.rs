@@ -14,7 +14,7 @@ enum SynthCommand {
 }
 
 thread_local! {
-    static COMMAND_QUEUE: RefCell<Queue<SynthCommand, 256>> = const { RefCell::new(Queue::new()) };
+    static COMMAND_QUEUE: RefCell<Queue<SynthCommand, 25000>> = const { RefCell::new(Queue::new()) };
     static DEVICE: RefCell<Option<OutputDevice>> = const { RefCell::new(None) };
 }
 
