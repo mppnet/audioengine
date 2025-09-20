@@ -1,0 +1,18 @@
+[package]
+name = "audioengine2"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+heapless = "0.9.1"
+itertools = "0.14.0"
+js-sys = "0.3.80"
+lazy_static = "1.5.0"
+once_cell = "1.21.3"
+rustysynth = "1.3.6"
+spin = "0.10.0"
+tinyaudio = "1.1.0"
+wasm-bindgen = "0.2.103"
